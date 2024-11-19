@@ -56,31 +56,11 @@ function TopCarousel({ slides }) {
               >
                 {slide.name}
               </h1>
-              <p style={{
-                margin: "10px 0", fontSize: "1.8rem",
-                fontWeight: "700", // Stronger font for the year
-                fontFamily: "'Poppins', sans-serif"
-              }}>
-                {slide.year}
-              </p>
-              <p style={{
-                margin: "10px 0", fontSize: "1.5rem", fontStyle: "italic", // Elegant italic style for genres
-                fontFamily: "'Playfair Display', serif"
-              }}>
-                {slide.genre}
-              </p>
-              <p style={{
-                margin: "0.5rem 0", fontSize: "1.5rem", fontStyle: "italic", fontFamily: "'Playfair Display', serif", display: "inline-flex",
-                alignItems: "center"
-              }}>
-                Rated {slide.rating} <span style={{ fontSize: "1.2rem", margin: "0.5rem" }}> ⭐</span>
-              </p>
             </div>
           </div>
-        </SwiperSlide >
-      ))
-      }
-    </Swiper >
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }
 
