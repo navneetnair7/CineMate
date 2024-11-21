@@ -178,85 +178,172 @@ export default function ContentCarousel({ slides }) {
               setSimilarMoviesCredits([]);
             }}
           ></div>
-          <div className="relative w-[90vw] bg-gray-900 rounded-lg overflow-hidden p-6">
-            {/* Close button */}
-            <button
-              onClick={() => {
-                setIsModalOpen(false);
-                setSimilarMovies([]);
-                setSimilarMoviesCredits([]);
-              }}
-              className="absolute top-4 right-4 z-50 text-white hover:text-gray-300 p-2"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          {/* <div className="relative w-[90vw] bg-gray-900 rounded-lg overflow-hidden p-6"> */}
+          {/* <div className="relative w-[90vw] max-w-[800px] max-h-[85vh] bg-gray-900 rounded-lg overflow-hidden p-6" >
+            <div className="h-full overflow-y-auto" >
+              <button
+                onClick={() => {
+                  setIsModalOpen(false);
+                  setSimilarMovies([]);
+                  setSimilarMoviesCredits([]);
+                }}
+                className="absolute top-4 right-4 z-50 text-white hover:text-gray-300 p-2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              <h2 className="text-3xl font-bold text-white mb-6">
+                {slides[selectedSlide].name}
+              </h2>
 
-            {/* Title */}
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {slides[selectedSlide].name}
-            </h2>
+              <h4 className="text-lg text-white mb-6">
+                Movies similar to {slides[selectedSlide].name}
+              </h4>
+              <Swiper
+                slidesPerView={4}
+                spaceBetween={16}
+                navigation={true}
+                modules={[Navigation]}
+                className="w-full"
+              >
+                {similarMovies.map((slide, idx) => (
+                  <SwiperSlide key={`modal-${idx}`}>
+                    <div className="aspect-[2/3] rounded-lg overflow-hidden">
+                      <img
+                        src={slide.img}
+                        alt={slide.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="m-10 text-white text-lg">
+                Movies with similar cast
+              </div>
+              <Swiper
+                slidesPerView={4}
+                spaceBetween={16}
+                navigation={true}
+                modules={[Navigation]}
+                className="w-full"
+              >
+                {similarMoviesCredits.map((slide, idx) => (
+                  <SwiperSlide key={`modal-${idx}`}>
+                    <div className="aspect-[2/3] rounded-lg overflow-hidden">
+                      <img
+                        src={slide.img}
+                        alt={slide.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div> 
+        </div> */}
+          <div className="relative w-[90vw] max-w-[800px] max-h-[90vh] bg-gray-900 rounded-lg overflow-hidden p-6"
+            style={{
+              top: '5%', // Adjust the modal's vertical position
+              position: 'relative', // Ensure it's positioned relative to the screen
+              margin: '0 auto', // Center horizontally
+            }}
+          >
+            {/* Scrollable Content */}
+            <div className="h-full overflow-y-auto max-h-[80vh]">
+              {/* Close button */}
+              <button
+                onClick={() => {
+                  setIsModalOpen(false);
+                  setSimilarMovies([]);
+                  setSimilarMoviesCredits([]);
+                }}
+                className="absolute top-4 right-4 z-50 text-white hover:text-gray-300 p-2"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
 
-            <h4 className="text-lg text-white mb-6">
-              Movies similar to {slides[selectedSlide].name}
-            </h4>
+              {/* Title */}
+              <h2 className="text-3xl font-bold text-white mb-6">
+                {slides[selectedSlide].name}
+              </h2>
 
-            {/* Carousel */}
-            <Swiper
-              slidesPerView={4}
-              spaceBetween={16}
-              navigation={true}
-              modules={[Navigation]}
-              className="w-full"
-            >
-              {similarMovies.map((slide, idx) => (
-                <SwiperSlide key={`modal-${idx}`}>
-                  <div className="aspect-[2/3] rounded-lg overflow-hidden">
-                    <img
-                      src={slide.img}
-                      alt={slide.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="m-10 text-white text-lg">
-              Movies with similar cast
+              <h4 className="text-lg text-white mb-6">
+                Movies similar to {slides[selectedSlide].name}
+              </h4>
+
+              {/* Carousel 1 */}
+              <Swiper
+                slidesPerView={4}
+                spaceBetween={16}
+                navigation={true}
+                modules={[Navigation]}
+                className="w-full"
+              >
+                {similarMovies.map((slide, idx) => (
+                  <SwiperSlide key={`modal-${idx}`}>
+                    <div className="aspect-[2/3] rounded-lg overflow-hidden">
+                      <img
+                        src={slide.img}
+                        alt={slide.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Second Section Title */}
+              <div className="m-10 text-white text-lg">Movies with similar cast</div>
+
+              {/* Carousel 2 */}
+              <Swiper
+                slidesPerView={4}
+                spaceBetween={16}
+                navigation={true}
+                modules={[Navigation]}
+                className="w-full"
+              >
+                {similarMoviesCredits.map((slide, idx) => (
+                  <SwiperSlide key={`modal-${idx}`}>
+                    <div className="aspect-[2/3] rounded-lg overflow-hidden">
+                      <img
+                        src={slide.img}
+                        alt={slide.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            <Swiper
-              slidesPerView={4}
-              spaceBetween={16}
-              navigation={true}
-              modules={[Navigation]}
-              className="w-full"
-            >
-              {similarMoviesCredits.map((slide, idx) => (
-                <SwiperSlide key={`modal-${idx}`}>
-                  <div className="aspect-[2/3] rounded-lg overflow-hidden">
-                    <img
-                      src={slide.img}
-                      alt={slide.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
