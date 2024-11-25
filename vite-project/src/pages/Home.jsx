@@ -12,6 +12,7 @@ function Home() {
   const [topMovies, setTopMovies] = useState([]);
   const [top10Movies, setTop10Movies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [topGenre, setTopGenre] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -49,8 +50,29 @@ function Home() {
       }
     };
 
+    const fetchGenre = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/getGenre");
+        const movies = [];
+        console.log(response.data);
+
+        for (var i in response.data) {
+          movies.push({
+            name: i,
+            img: response.data[i],
+          });
+        }
+        setTopGenre(movies);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    };
+
     fetchMovies();
     fetchTopMovies();
+    fetchGenre();
   }, []);
 
   return (
@@ -58,8 +80,8 @@ function Home() {
       <Navbar />
       {isLoading ? <div>Loading...</div> : <TopMovies topMovies={topMovies} />}
       <ContentBased title="Top Rated Movies" movies={top10Movies} />
-      <ContentBased title="Movies for your taste" />
-      <Collaborative />
+      <ContentBased title="Movies for your taste" movies={topGenre} />
+      {/* <Collaborative /> */}
     </div>
   );
 }
