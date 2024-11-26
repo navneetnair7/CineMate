@@ -130,7 +130,7 @@ The system is divided into two main components:
 
 #### 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/hybrid-movie-recommendation.git
+git clone https://github.com/navneetnair7/CineMate.git
 cd hybrid-movie-recommendation
 ```
 
